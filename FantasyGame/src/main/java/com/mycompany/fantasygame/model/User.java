@@ -1,3 +1,4 @@
+package com.mycompany.fantasygame.model;
 import java.util.List;
 
 public class User {
