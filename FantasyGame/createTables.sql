@@ -1,0 +1,26 @@
+CREATE DATABASE IF NOT EXISTS tasksPlataform;
+
+USE tasksPlataform;
+
+CREATE TABLE IF NOT EXISTS User (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    userPerfil VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    isAdmin BOOLEAN,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS Task (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255),
+    descricao TEXT,
+    dataCriacao DATE,
+    dataAtualizacao DATE,
+    dataConclusao DATE,
+    status VARCHAR(255),
+    user_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES User(id)
+);
